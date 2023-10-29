@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -14,14 +14,14 @@ export const Container = styled.div`
   overflow-x: hidden;
 
   @media (max-width: 640px) {
-    padding: 10px 5px
+    padding: 10px 5px;
   }
 
   &::-webkit-scrollbar {
-      width: 5px;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: #0007;
-    }
-`
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #0007;
+  }
+`;

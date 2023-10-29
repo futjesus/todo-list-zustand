@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { colors } from '../../styles/global'
+import styled from 'styled-components';
+import { colors } from '../../styles/global';
 
 export const Container = styled.li`
   display: flex;
@@ -10,12 +10,12 @@ export const Container = styled.li`
   cursor: grab;
 
   p {
-    width: 100%; 
+    width: 100%;
     font-size: 20px;
     font-weight: 500;
     padding-left: 10px;
   }
-`
+`;
 
 export const Buttons = styled.div`
   display: flex;
@@ -26,4 +26,4 @@ export const Buttons = styled.div`
     height: 40px;
     width: 20px;
   }
-`
+`;
