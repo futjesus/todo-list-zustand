@@ -1,12 +1,19 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/global';
 
-export const Container = styled.li`
+import { useThemeStore } from '../../stores';
+
+export const Container = styled.li.attrs(() => {
+  const color = useThemeStore((state) => state.color);
+
+  return {
+    color,
+  };
+})`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 0 8px 8px;
-  border-bottom: 2px ${colors.color + '40'} solid;
+  border-bottom: 2px ${(props) => props.color + '40'} solid;
   cursor: grab;
 
   p {

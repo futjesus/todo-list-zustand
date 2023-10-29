@@ -1,7 +1,14 @@
-import styled from 'styled-components'
-import { colors } from '../../styles/global'
+import styled from 'styled-components';
 
-export const Container = styled.div`
+import { useThemeStore } from '../../stores';
+
+export const Container = styled.div.attrs(() => {
+  const background = useThemeStore((state) => state.computed.background);
+
+  return {
+    background,
+  };
+})`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +25,7 @@ export const Container = styled.div`
     gap: 10px;
 
     text-transform: uppercase;
-    background: ${colors.background};
+    background: ${(props) => props.background};
     border-radius: 15px 15px 0 0;
     padding: 20px;
 
@@ -32,37 +39,53 @@ export const Container = styled.div`
   footer {
     height: 10px;
     border-radius: 0 0 15px 15px;
-    background: ${colors.background};
+    background: ${(props) => props.background};
   }
-`
+`;
 
 export const Box = styled.div`
   max-width: 350px;
   width: 100%;
   border-radius: 15px;
-`
+`;
 
-export const Body = styled.div`
+export const Body = styled.div.attrs(() => {
+  const glass = useThemeStore((state) => state.computed.glass);
+
+  return {
+    glass,
+  };
+})`
   display: flex;
   flex-direction: column;
   gap: 5px;
 
-  background: ${colors.glass};
+  background: ${(props) => props.glass};
   padding: 30px 10px 20px;
-`
+`;
 
-export const Inputs = styled.div`
+export const Inputs = styled.div.attrs(() => {
+  const glass = useThemeStore((state) => state.computed.glass);
+  const background = useThemeStore((state) => state.computed.background);
+  const color = useThemeStore((state) => state.color);
+
+  return {
+    glass,
+    background,
+    color,
+  };
+})`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
-  
-  background: ${colors.background};
+
+  background: ${(props) => props.glass};
   border-radius: 12px;
   padding: 5px 15px;
 
   hr {
-    border-top: .5px solid ${colors.color};
+    border-top: 0.5px solid ${(props) => props.color};
     width: 100%;
     opacity: 40%;
     margin-top: -5px;
@@ -80,14 +103,14 @@ export const Inputs = styled.div`
     div {
       justify-content: start;
     }
-    
-    input[type="range"] {
+
+    input[type='range'] {
       -webkit-appearance: none;
       height: 30px;
       width: 100%;
       max-width: 145px;
       border-radius: 20px;
-      background: ${colors.glass};
+      background: ${(props) => props.glass};
       cursor: pointer;
 
       &::-webkit-slider-thumb {
@@ -95,18 +118,16 @@ export const Inputs = styled.div`
         height: 30px;
         width: 30px;
         border-radius: 50%;
-        background: ${colors.background};
-        border: 2px solid ${colors.glass};
+        background: ${(props) => props.background};
+        border: 2px solid ${(props) => props.glass};
         cursor: ew-resize;
-
       }
 
       &::-webkit-slider-thumb:hover {
         filter: brightness(1.1);
       }
-    } 
+    }
   }
-  
 
   p {
     text-transform: uppercase;
@@ -125,20 +146,25 @@ export const Inputs = styled.div`
     filter: none;
 
     &::-webkit-color-swatch {
-    border-radius: 20px;
-    border: none;
+      border-radius: 20px;
+      border: none;
     }
-
   }
-`
+`;
 
-export const Buttons = styled.div`
+export const Buttons = styled.div.attrs(() => {
+  const glass = useThemeStore((state) => state.computed.glass);
+
+  return {
+    glass,
+  };
+})`
   display: flex;
   justify-content: center;
   gap: 10px;
 
   text-align: center;
-  background: ${colors.glass};
+  background: ${(props) => props.glass};
   padding: 10px 0 30px;
 
   button {
@@ -146,4 +172,4 @@ export const Buttons = styled.div`
     padding: 8px 20px;
     font-size: 18px;
   }
-`
+`;
